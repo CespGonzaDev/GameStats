@@ -11,7 +11,7 @@ class EventParserSpec extends AnyFunSuite:
   private val valid: String =
     """{"eventId":"3f2b8c1e-7a4d-4e5b-9c10-1a2b3c4d5e6f","timestamp":"2026-10-07T19:30:00.000Z",
       |"gameId":"snake","gameVersion":"1.0.0","matchId":"m1","playerId":"p1","type":"ACTION",
-      |"action":"EAT_FOOD","data":{"foodType":"APPLE","points":10}}""".stripMargin.replace("\n", "")
+      |"action":"EAT_FOOD","data":{"foodType":"APPLE","points":10}}""".stripMargin.replace("\r", "").replace("\n", "")
 
   private def json(s: String): Json = parse(s).toOption.get
 
