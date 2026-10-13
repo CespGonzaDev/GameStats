@@ -1,0 +1,28 @@
+# Binarios compilados
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/go/gamestats
+/go/gamestats.exe
+
+# Archivos de prueba y profiling
+*.out
+*.test
+
+# Directorios de IDEs y editores
+.idea/
+.vscode/
+*.swp
+*~
+
+# Scala / SBT (para cuando se incorpore)
+target/
+project/target/
+project/project/
+.bsp/
+.bloop/
+
+# Logs del sistema
+*.log
