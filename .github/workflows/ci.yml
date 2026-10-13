@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-go:
-    name: Go Lint, Tests & Race Detector
+    name: Go Lint, Tests & Build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -31,9 +31,31 @@ jobs:
       - name: Compilar binario de Go
         run: CGO_ENABLED=0 go build -v ./cmd/gamestats
 
+  test-scala:
+    name: Scala Tests & Assembly
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: scala
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Configurar SBT
+        uses: sbt/setup-sbt@v1
+
+      - name: Ejecutar pruebas y compilar jar
+        run: sbt test assembly
+
   build-containers:
-    name: Build & Smoke Test Docker
-    needs: test-go
+    name: Build Docker Containers
+    needs: [test-go, test-scala]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
@@ -41,3 +63,6 @@ jobs:
 
       - name: Build imagen Docker de Go
         run: docker build -t gamestats-go:latest ./go
+
+      - name: Build imagen Docker de Scala
+        run: docker build -t gamestats-scala:latest ./scala

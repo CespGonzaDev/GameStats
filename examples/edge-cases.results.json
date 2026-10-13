@@ -1,0 +1,522 @@
+{
+  "schemaVersion" : "1.0",
+  "matches" : [
+    {
+      "matchId" : "edge-agario-window",
+      "gameId" : "agario",
+      "gameVersion" : "1.0.0",
+      "status" : "FINISHED",
+      "startedAt" : "2026-10-07T19:30:00Z",
+      "finishedAt" : "2026-10-07T19:31:30Z",
+      "eventCount" : 11,
+      "duplicatesDropped" : 0,
+      "actionCounts" : {
+        "PLAYER_JOINED" : 4,
+        "SPLIT" : 2,
+        "EAT_PLAYER" : 3,
+        "MATCH_FINISHED" : 1,
+        "MATCH_STARTED" : 1
+      },
+      "matchMetrics" : {
+        "durationSeconds" : 90,
+        "eventsPerMinute" : 7.3333,
+        "peakMass" : 620,
+        "totalKills" : 3
+      },
+      "players" : [
+        {
+          "playerId" : "usr_1",
+          "metrics" : {
+            "kills" : 3,
+            "massConsumed" : 220,
+            "peakMass" : 620,
+            "splits" : 2,
+            "eventCount" : 6
+          },
+          "distributions" : {
+            
+          },
+          "crossEventMetrics" : {
+            "massGainedWithin10sOfSplit" : 150,
+            "splitsWithKill" : 1,
+            "splitSuccessRate" : 0.5,
+            "riskConversionFactor" : 0.1471
+          }
+        },
+        {
+          "playerId" : "usr_2",
+          "metrics" : {
+            "eventCount" : 1,
+            "splits" : 0,
+            "kills" : 0,
+            "massConsumed" : 0
+          },
+          "distributions" : {
+            
+          },
+          "crossEventMetrics" : {
+            "massGainedWithin10sOfSplit" : 0,
+            "splitsWithKill" : 0
+          }
+        },
+        {
+          "playerId" : "usr_3",
+          "metrics" : {
+            "eventCount" : 1,
+            "splits" : 0,
+            "kills" : 0,
+            "massConsumed" : 0
+          },
+          "distributions" : {
+            
+          },
+          "crossEventMetrics" : {
+            "massGainedWithin10sOfSplit" : 0,
+            "splitsWithKill" : 0
+          }
+        },
+        {
+          "playerId" : "usr_4",
+          "metrics" : {
+            "eventCount" : 1,
+            "splits" : 0,
+            "kills" : 0,
+            "massConsumed" : 0
+          },
+          "distributions" : {
+            
+          },
+          "crossEventMetrics" : {
+            "massGainedWithin10sOfSplit" : 0,
+            "splitsWithKill" : 0
+          }
+        }
+      ],
+      "patterns" : [
+      ],
+      "warnings" : [
+      ]
+    },
+    {
+      "matchId" : "edge-battleship-streak",
+      "gameId" : "battleship",
+      "gameVersion" : "1.0.0",
+      "status" : "FINISHED",
+      "startedAt" : "2026-10-07T19:30:00Z",
+      "finishedAt" : "2026-10-07T19:31:09Z",
+      "eventCount" : 26,
+      "duplicatesDropped" : 0,
+      "actionCounts" : {
+        "MATCH_FINISHED" : 1,
+        "FIRE_SHOT" : 22,
+        "PLAYER_JOINED" : 2,
+        "MATCH_STARTED" : 1
+      },
+      "matchMetrics" : {
+        "durationSeconds" : 69,
+        "eventsPerMinute" : 22.6087,
+        "totalShots" : 22
+      },
+      "players" : [
+        {
+          "playerId" : "p1",
+          "metrics" : {
+            "accuracy" : 0.8182,
+            "eventCount" : 12,
+            "hits" : 9,
+            "shots" : 11,
+            "avgDecisionSeconds" : 3,
+            "shipsSunk" : 2,
+            "misses" : 2
+          },
+          "distributions" : {
+            "results" : {
+              "HIT" : 9,
+              "MISS" : 2
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        },
+        {
+          "playerId" : "p2",
+          "metrics" : {
+            "accuracy" : 0,
+            "eventCount" : 12,
+            "hits" : 0,
+            "shots" : 11,
+            "avgDecisionSeconds" : 3,
+            "shipsSunk" : 0,
+            "misses" : 11
+          },
+          "distributions" : {
+            "results" : {
+              "HIT" : 0,
+              "MISS" : 11
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        }
+      ],
+      "patterns" : [
+        {
+          "pattern" : "DEADLY_STREAK",
+          "playerId" : "p1",
+          "startedAt" : "2026-10-07T19:30:09Z",
+          "endedAt" : "2026-10-07T19:30:21Z",
+          "eventIds" : [
+            "3474724a-775b-49bf-be34-8a0e451650be",
+            "aa47e31c-02e7-4edc-b414-52c54d7c33f2",
+            "17eadff4-48a8-4a07-b05e-ca1a2972b860"
+          ],
+          "description" : "3 impactos consecutivos sin fallos, culminando en el hundimiento de CRUISER",
+          "details" : {
+            "streakLength" : 3,
+            "startTurn" : 3,
+            "endTurn" : 7
+          }
+        },
+        {
+          "pattern" : "DEADLY_STREAK",
+          "playerId" : "p1",
+          "startedAt" : "2026-10-07T19:30:45Z",
+          "endedAt" : "2026-10-07T19:31:03Z",
+          "eventIds" : [
+            "a3351c7f-c9a4-4255-a149-2dc04af06e43",
+            "c2de56b8-961d-4f40-978b-25ac7ebbdf84",
+            "45e78cf4-fe33-4d8c-8658-2fcba2a4af11",
+            "15a09906-9c7d-44aa-a47b-01271f2670d7"
+          ],
+          "description" : "4 impactos consecutivos sin fallos, culminando en el hundimiento de BATTLESHIP",
+          "details" : {
+            "streakLength" : 4,
+            "startTurn" : 15,
+            "endTurn" : 21
+          }
+        }
+      ],
+      "warnings" : [
+      ]
+    },
+    {
+      "matchId" : "edge-football-comeback",
+      "gameId" : "head_football",
+      "gameVersion" : "1.0.0",
+      "status" : "FINISHED",
+      "startedAt" : "2026-10-07T19:30:00Z",
+      "finishedAt" : "2026-10-07T19:31:00Z",
+      "eventCount" : 19,
+      "duplicatesDropped" : 0,
+      "actionCounts" : {
+        "GOAL" : 5,
+        "PLAYER_JOINED" : 2,
+        "KICK" : 10,
+        "MATCH_FINISHED" : 1,
+        "MATCH_STARTED" : 1
+      },
+      "matchMetrics" : {
+        "durationSeconds" : 60,
+        "eventsPerMinute" : 19,
+        "totalShots" : 10,
+        "totalGoals" : 5
+      },
+      "players" : [
+        {
+          "playerId" : "p1",
+          "metrics" : {
+            "eventCount" : 7,
+            "shots" : 4,
+            "goals" : 2,
+            "shotEffectiveness" : 0.5
+          },
+          "distributions" : {
+            "shotTypes" : {
+              "GROUND" : 3,
+              "HEADER" : 1
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        },
+        {
+          "playerId" : "p2",
+          "metrics" : {
+            "eventCount" : 10,
+            "shots" : 6,
+            "goals" : 3,
+            "shotEffectiveness" : 0.5
+          },
+          "distributions" : {
+            "shotTypes" : {
+              "GROUND" : 4,
+              "HEADER" : 1,
+              "LOB" : 1
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        }
+      ],
+      "patterns" : [
+        {
+          "pattern" : "COMEBACK",
+          "playerId" : "p2",
+          "startedAt" : "2026-10-07T19:30:20.800Z",
+          "endedAt" : "2026-10-07T19:31:00Z",
+          "eventIds" : [
+            "e43bef8e-23a8-48bd-aca4-fb90109cfd66",
+            "cc430424-2b44-4e02-911a-235cac10079d",
+            "039e786c-344b-49fd-baf4-393822b313dd",
+            "cdb55369-54a7-465a-b9de-b390b6f6caf4"
+          ],
+          "description" : "p2 remontó una desventaja de 2 goles y ganó 3-2",
+          "details" : {
+            "maxDeficit" : 2,
+            "winnerFinalGoals" : 3,
+            "rivalFinalGoals" : 2,
+            "goalsAfterDeficit" : 3
+          }
+        }
+      ],
+      "warnings" : [
+      ]
+    },
+    {
+      "matchId" : "edge-football-incomplete",
+      "gameId" : "head_football",
+      "gameVersion" : "1.0.0",
+      "status" : "IN_PROGRESS",
+      "startedAt" : "2026-10-07T19:30:00Z",
+      "eventCount" : 18,
+      "duplicatesDropped" : 0,
+      "actionCounts" : {
+        "GOAL" : 5,
+        "KICK" : 10,
+        "PLAYER_JOINED" : 2,
+        "MATCH_STARTED" : 1
+      },
+      "matchMetrics" : {
+        "eventsPerMinute" : 20.4545,
+        "totalShots" : 10,
+        "totalGoals" : 5
+      },
+      "players" : [
+        {
+          "playerId" : "p1",
+          "metrics" : {
+            "eventCount" : 7,
+            "shots" : 4,
+            "goals" : 2,
+            "shotEffectiveness" : 0.5
+          },
+          "distributions" : {
+            "shotTypes" : {
+              "GROUND" : 3,
+              "HEADER" : 1
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        },
+        {
+          "playerId" : "p2",
+          "metrics" : {
+            "eventCount" : 10,
+            "shots" : 6,
+            "goals" : 3,
+            "shotEffectiveness" : 0.5
+          },
+          "distributions" : {
+            "shotTypes" : {
+              "GROUND" : 4,
+              "HEADER" : 1,
+              "LOB" : 1
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        }
+      ],
+      "patterns" : [
+      ],
+      "warnings" : [
+        "no se recibió MATCH_FINISHED (partida incompleta)"
+      ]
+    },
+    {
+      "matchId" : "edge-football-no-comeback",
+      "gameId" : "head_football",
+      "gameVersion" : "1.0.0",
+      "status" : "FINISHED",
+      "startedAt" : "2026-10-07T19:30:00Z",
+      "finishedAt" : "2026-10-07T19:30:40Z",
+      "eventCount" : 13,
+      "duplicatesDropped" : 0,
+      "actionCounts" : {
+        "GOAL" : 3,
+        "PLAYER_JOINED" : 2,
+        "KICK" : 6,
+        "MATCH_FINISHED" : 1,
+        "MATCH_STARTED" : 1
+      },
+      "matchMetrics" : {
+        "durationSeconds" : 40,
+        "eventsPerMinute" : 19.5,
+        "totalShots" : 6,
+        "totalGoals" : 3
+      },
+      "players" : [
+        {
+          "playerId" : "p1",
+          "metrics" : {
+            "eventCount" : 7,
+            "shots" : 4,
+            "goals" : 2,
+            "shotEffectiveness" : 0.5
+          },
+          "distributions" : {
+            "shotTypes" : {
+              "GROUND" : 3,
+              "HEADER" : 1
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        },
+        {
+          "playerId" : "p2",
+          "metrics" : {
+            "eventCount" : 4,
+            "shots" : 2,
+            "goals" : 1,
+            "shotEffectiveness" : 0.5
+          },
+          "distributions" : {
+            "shotTypes" : {
+              "GROUND" : 1,
+              "LOB" : 1
+            }
+          },
+          "crossEventMetrics" : {
+            
+          }
+        }
+      ],
+      "patterns" : [
+      ],
+      "warnings" : [
+      ]
+    },
+    {
+      "matchId" : "edge-new-game-chess",
+      "gameId" : "ajedrez",
+      "gameVersion" : "1.0.0",
+      "status" : "FINISHED",
+      "startedAt" : "2026-10-07T19:30:00Z",
+      "finishedAt" : "2026-10-07T19:30:20Z",
+      "eventCount" : 7,
+      "duplicatesDropped" : 0,
+      "actionCounts" : {
+        "MATCH_FINISHED" : 1,
+        "PLAYER_JOINED" : 2,
+        "MATCH_STARTED" : 1,
+        "MOVE_PIECE" : 3
+      },
+      "matchMetrics" : {
+        "durationSeconds" : 20,
+        "eventsPerMinute" : 21
+      },
+      "players" : [
+        {
+          "playerId" : "black",
+          "metrics" : {
+            "eventCount" : 2
+          },
+          "distributions" : {
+            
+          },
+          "crossEventMetrics" : {
+            
+          }
+        },
+        {
+          "playerId" : "white",
+          "metrics" : {
+            "eventCount" : 3
+          },
+          "distributions" : {
+            
+          },
+          "crossEventMetrics" : {
+            
+          }
+        }
+      ],
+      "patterns" : [
+      ],
+      "warnings" : [
+        "gameId 'ajedrez' sin analizador específico: solo se calcularon métricas globales"
+      ]
+    },
+    {
+      "matchId" : "edge-snake-route",
+      "gameId" : "snake",
+      "gameVersion" : "1.0.0",
+      "status" : "FINISHED",
+      "startedAt" : "2026-10-07T19:30:00Z",
+      "finishedAt" : "2026-10-07T19:30:06Z",
+      "eventCount" : 14,
+      "duplicatesDropped" : 0,
+      "actionCounts" : {
+        "EAT_FOOD" : 3,
+        "CHANGE_DIRECTION" : 7,
+        "MATCH_FINISHED" : 1,
+        "MATCH_STARTED" : 1,
+        "PLAYER_JOINED" : 1,
+        "COLLISION" : 1
+      },
+      "matchMetrics" : {
+        "durationSeconds" : 6,
+        "eventsPerMinute" : 140,
+        "peakScore" : 30
+      },
+      "players" : [
+        {
+          "playerId" : "p1",
+          "metrics" : {
+            "peakScore" : 30,
+            "eventCount" : 12,
+            "totalPoints" : 30,
+            "maxLength" : 6,
+            "foodEaten" : 3,
+            "directionChanges" : 7
+          },
+          "distributions" : {
+            "foodTypes" : {
+              "APPLE" : 3
+            }
+          },
+          "crossEventMetrics" : {
+            "foodIntervals" : 2,
+            "avgDirectionChangesBetweenFood" : 2,
+            "bestDirectionChangesBetweenFood" : 1
+          }
+        }
+      ],
+      "patterns" : [
+      ],
+      "warnings" : [
+      ]
+    }
+  ],
+  "invalidEvents" : [
+  ]
+}

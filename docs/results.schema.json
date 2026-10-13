@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "gamestats-analysis-output",
+  "title": "GameStatsAnalysisOutput",
+  "description": "Resultado analítico que expone el módulo Scala (borrador del contrato, versión 1.0). Los campos opcionales se omiten cuando no aplican; las métricas indefinidas (p. ej. una razón con denominador 0) no aparecen.",
+  "type": "object",
+  "required": ["schemaVersion", "matches", "invalidEvents"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "description": "Versión de este contrato.", "const": "1.0" },
+    "matches": { "type": "array", "items": { "$ref": "#/definitions/MatchReport" } },
+    "invalidEvents": {
+      "type": "array",
+      "description": "Eventos rechazados por la validación estructural del Envelope.",
+      "items": {
+        "type": "object",
+        "required": ["source", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "source": { "type": "string", "description": "Posición en la entrada, p. ej. 'línea 3' o 'elemento 2'." },
+          "reason": { "type": "string" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Metrics": {
+      "type": "object",
+      "description": "Nombre de métrica -> valor numérico (redondeado a 4 decimales).",
+      "additionalProperties": { "type": "number" }
+    },
+    "MatchReport": {
+      "type": "object",
+      "required": [
+        "matchId", "gameId", "gameVersion", "status", "eventCount", "duplicatesDropped",
+        "actionCounts", "matchMetrics", "players", "patterns", "warnings"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "matchId": { "type": "string" },
+        "gameId": { "type": "string" },
+        "gameVersion": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["FINISHED", "IN_PROGRESS", "UNKNOWN"],
+          "description": "FINISHED: hubo MATCH_STARTED y MATCH_FINISHED. IN_PROGRESS: solo MATCH_STARTED. UNKNOWN: cualquier otro caso."
+        },
+        "startedAt": { "type": "string", "format": "date-time" },
+        "finishedAt": { "type": "string", "format": "date-time" },
+        "eventCount": { "type": "integer", "minimum": 0, "description": "Eventos únicos analizados (sin duplicados)." },
+        "duplicatesDropped": { "type": "integer", "minimum": 0, "description": "Reentregas descartadas por eventId repetido." },
+        "actionCounts": {
+          "type": "object",
+          "description": "Cantidad de eventos por acción.",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "matchMetrics": {
+          "$ref": "#/definitions/Metrics",
+          "description": "Métricas agregadas por partida. Globales: durationSeconds (solo FINISHED), eventsPerMinute. Específicas del juego: totalShots, totalGoals, peakScore, peakMass, totalKills, ..."
+        },
+        "players": { "type": "array", "items": { "$ref": "#/definitions/PlayerReport" } },
+        "patterns": { "type": "array", "items": { "$ref": "#/definitions/PatternDetection" } },
+        "warnings": {
+          "type": "array",
+          "description": "Anomalías no fatales: payloads inválidos, lifecycle incompleto, juego sin analizador, etc.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "PlayerReport": {
+      "type": "object",
+      "required": ["playerId", "metrics", "distributions", "crossEventMetrics"],
+      "additionalProperties": false,
+      "properties": {
+        "playerId": { "type": "string" },
+        "metrics": {
+          "$ref": "#/definitions/Metrics",
+          "description": "Agregaciones por jugador (eventCount siempre; shots/hits/accuracy/avgDecisionSeconds en battleship; shots/goals/shotEffectiveness en head_football; foodEaten/totalPoints/peakScore en snake; splits/kills/massConsumed/peakMass en agario)."
+        },
+        "distributions": {
+          "type": "object",
+          "description": "Histogramas: nombre -> (categoría -> conteo). Ej.: shotTypes {HEADER, GROUND, LOB}.",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "crossEventMetrics": {
+          "$ref": "#/definitions/Metrics",
+          "description": "Métricas que relacionan distintos tipos de evento. snake: avgDirectionChangesBetweenFood, bestDirectionChangesBetweenFood, foodIntervals. agario: massGainedWithin10sOfSplit, splitsWithKill, splitSuccessRate, riskConversionFactor."
+        }
+      }
+    },
+    "PatternDetection": {
+      "type": "object",
+      "required": ["pattern", "playerId", "startedAt", "endedAt", "eventIds", "description", "details"],
+      "additionalProperties": false,
+      "properties": {
+        "pattern": { "type": "string", "description": "Nombre del patrón, p. ej. COMEBACK o DEADLY_STREAK." },
+        "playerId": { "type": "string", "description": "Jugador que protagoniza el patrón." },
+        "startedAt": { "type": "string", "format": "date-time" },
+        "endedAt": { "type": "string", "format": "date-time" },
+        "eventIds": {
+          "type": "array",
+          "description": "Eventos que componen la secuencia (trazabilidad hacia los eventos originales).",
+          "items": { "type": "string", "format": "uuid" }
+        },
+        "description": { "type": "string" },
+        "details": { "$ref": "#/definitions/Metrics" }
+      }
+    }
+  }
+}
